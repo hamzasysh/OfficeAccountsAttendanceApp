@@ -86,10 +86,10 @@ DATABASES = {
             'ENGINE': 'djongo',
             'ENFORCE_SCHEMA': False,
             'CLIENT': {
-                'host': 'mongodb+srv://hamzaashraf:DwlsgnrpBwnz1pN5@cluster0.r0dkzmp.mongodb.net/?retryWrites=true&w=majority',
-                'username': 'hamzaashraf',
-                'password': 'DwlsgnrpBwnz1pN5',
-                'name': 'employeeManagment',
+                'host': 'mongodb_uri_atlas',
+                'username': 'mongodb_atlas_uname',
+                'password': 'mongodb_atlas_password',
+                'name': 'db_name',
                 'authMechanism': 'SCRAM-SHA-1'
             }
     }

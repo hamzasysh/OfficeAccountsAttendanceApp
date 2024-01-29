@@ -34,7 +34,10 @@ Morever, Django Rest Framework has been activated to make CRUD APIs for each of 
 
 0. clone the repo and navigate to proj dir.
 1. run this command pip install -r requirements.txt
-2. create a mongodb database named "employeeManagment" 
-3. run commands for db migrations in django.
-4. test crud apis with postman after creating a superuser and pass the creds with token calls
+2. create a free account on mongodb atlas and create/start a cluster
+3. create a mongodb database in atlas cluster named "employeeManagment" 
+4. connect to mongodb cluster URI using username & password in settings.py file of django project.
+5. run commands for db migrations in django to create model tables.
+6. start the server to test crud apis
+7. test crud apis with postman after creating a superuser and pass the creds with token calls
    to test the crud apis for each model 
