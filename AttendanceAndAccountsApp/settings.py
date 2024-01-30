@@ -86,9 +86,9 @@ DATABASES = {
             'ENGINE': 'djongo',
             'ENFORCE_SCHEMA': False,
             'CLIENT': {
-                'host': 'mongodb_uri_atlas',
-                'username': 'mongodb_atlas_uname',
-                'password': 'mongodb_atlas_password',
+                'host': 'mongodb_uri',
+                'username': 'username',
+                'password': 'password',
                 'name': 'db_name',
                 'authMechanism': 'SCRAM-SHA-1'
             }

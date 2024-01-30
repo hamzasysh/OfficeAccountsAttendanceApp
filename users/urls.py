@@ -24,10 +24,10 @@ See Also:
 
 urlpatterns = [
     path('', views.ApiOverview, name='home'),
-    path('create/', views.add_users, name='add-users'),
-    path('all/', views.view_users, name='view-users'),
-    path('update/<int:pk>/', views.update_users, name='update_users'),
-    path('<int:pk>/delete/', views.delete_users, name='delete-items'),
+    path('create/', views.add_users, name='add-user'),
+    path('all/', views.view_users, name='view-user'),
+    path('update/<int:pk>/', views.update_users, name='update-user'),
+    path('<int:pk>/delete/', views.delete_users, name='delete-user'),
     path('hello/', views.hello_message, name='hello'),
 
 
