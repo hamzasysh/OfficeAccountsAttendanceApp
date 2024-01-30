@@ -35,9 +35,11 @@ Morever, Django Rest Framework has been activated to make CRUD APIs for each of 
 0. clone the repo and navigate to proj dir.
 1. run this command pip install -r requirements.txt
 2. create a free account on mongodb atlas and create/start a cluster
-3. create a mongodb database in atlas cluster named "employeeManagment" 
-4. connect to mongodb cluster URI using username & password in settings.py file of django project.
+3. create a mongodb database in atlas cluster. 
+4. connect to mongodb cluster URI using username & password in settings.py file of django project.Also, write name of created db in the settings.py file.
 5. run commands for db migrations in django to create model tables.
 6. start the server to test crud apis
 7. test crud apis with postman after creating a superuser and pass the creds with token calls
-   to test the crud apis for each model 
+   to test the crud apis for each model
+8. for unit testing , set your mongodb uri and test database credentials in settings_test.py file.
+9. To run unit tests , navigate to the project directory and run tests for each app by using command "python manage.py test appname" 
