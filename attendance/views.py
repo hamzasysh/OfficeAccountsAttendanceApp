@@ -128,3 +128,6 @@ def hello_message(request):
     """
     content = {'message': 'Hello, World!'}
     return Response(content)
+
+def sfile_load(request):
+    return render(request,'basic.html')
