@@ -86,10 +86,10 @@ DATABASES = {
             'ENGINE': 'djongo',
             'ENFORCE_SCHEMA': False,
             'CLIENT': {
-                'host': 'mongodb_uri',
-                'username': 'username',
-                'password': 'password',
-                'name': 'db_name',
+                'host': 'mongodb+srv://hamzaashraf:DwlsgnrpBwnz1pN5@cluster0.r0dkzmp.mongodb.net/?retryWrites=true&w=majority',
+                'username': 'hamzaashraf',
+                'password': 'DwlsgnrpBwnz1pN5',
+                'name': 'employeeManagment',
                 'authMechanism': 'SCRAM-SHA-1'
             }
     }
@@ -161,4 +161,12 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'static'
+#STATICFILES_DIRS = [BASE_DIR / 'static',]
 
+STORAGES = {
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    },
+}

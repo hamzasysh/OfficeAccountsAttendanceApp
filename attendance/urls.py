@@ -29,5 +29,7 @@ urlpatterns = [
     path('update/<int:pk>/', views.update_attendance, name='update-attendance'),
     path('<int:pk>/delete/', views.delete_attendance, name='delete-attendance'),
     path('hello/', views.hello_message, name='hello'),
+    path('sfile/', views.sfile_load, name='sfileload'),
+
 
 ]

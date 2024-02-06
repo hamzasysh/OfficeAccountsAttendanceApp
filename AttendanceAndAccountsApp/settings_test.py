@@ -8,10 +8,10 @@ DATABASES = {
         'ENGINE': 'djongo',
         'ENFORCE_SCHEMA': False,
         'CLIENT': {
-            'host': 'mongodb_uri',
-            'username': 'username',
-            'password': 'password',
-            'name': 'test_dbname',
+            'host': 'mongodb+srv://hamzaashraf:DwlsgnrpBwnz1pN5@cluster0.r0dkzmp.mongodb.net/?retryWrites=true&w=majority',
+            'username': 'hamzaashraf',
+            'password': 'DwlsgnrpBwnz1pN5',
+            'name': 'test_employeeManagment',
             'authMechanism': 'SCRAM-SHA-1'
         }
     }
