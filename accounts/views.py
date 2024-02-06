@@ -48,7 +48,7 @@ def add_account(request):
             account.save()
         except Exception as e:
             return Response(f"Error saving account: {e}")
-        return Response(account.data)
+        return Response(account.data,status=status.HTTP_201_CREATED)
     else:
         return Response(account.errors, status=status.HTTP_404_NOT_FOUND)
 
@@ -71,7 +71,7 @@ def view_account(request):
 
     if account:
         serializer = AccountSerializer(account, many=True)
-        return Response(serializer.data)
+        return Response(serializer.data,status=status.HTTP_200_OK)
     else:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
@@ -87,12 +87,15 @@ def update_account(request, pk):
     Returns:
         Response: A response containing updated accounts data if successful, or error messages if validation fails.
     """
-    account = Accounts.objects.get(pk=pk)
-    data = AccountSerializer(instance=account, data=request.data)
+    try:
+        account = Accounts.objects.get(pk=pk)
+        data = AccountSerializer(instance=account, data=request.data)
+    except Exception as e:
+        return Response(f'Error: {str(e)}',status=status.HTTP_404_NOT_FOUND)
 
     if data.is_valid():
         data.save()
-        return Response(data.data)
+        return Response(data.data,status=status.HTTP_200_OK)
     else:
         return Response(data.errors, status=status.HTTP_404_NOT_FOUND)
 
@@ -114,7 +117,7 @@ def delete_account(request, pk):
         return Response(status=status.HTTP_202_ACCEPTED)
     except Exception as e:
         response_html = f'Error: {str(e)}'
-        return Response(response_html)
+        return Response(response_html,status=status.HTTP_404_NOT_FOUND)
 
 @api_view(['GET'])
 def hello_message(request):

@@ -44,7 +44,7 @@ def add_attendance(request):
 
     if attendance.is_valid():
         attendance.save()
-        return Response(attendance.data)
+        return Response(attendance.data,status=status.HTTP_201_CREATED)
     else:
         return Response(attendance.errors, status=status.HTTP_404_NOT_FOUND)
 
@@ -61,13 +61,16 @@ def view_attendance(request):
     """
     # Filter attendance records based on query parameters if provided
     if request.query_params:
-        attendance = Attendance.objects.filter(**request.query_params.dict())
+        try:
+            attendance = Attendance.objects.filter(**request.query_params.dict())
+        except Exception as e:
+            return Response(status=status.HTTP_404_NOT_FOUND)
     else:
         attendance = Attendance.objects.all()
 
     if attendance:
         serializer = AttendanceSerializer(attendance, many=True)
-        return Response(serializer.data)
+        return Response(serializer.data,status=status.HTTP_200_OK)
     else:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
@@ -83,12 +86,15 @@ def update_attendance(request, pk):
     Returns:
         Response: A response containing updated attendance data if successful, or error messages if validation fails.
     """
-    attendance = Attendance.objects.get(pk=pk)
-    data = AttendanceSerializer(instance=attendance, data=request.data)
+    try:
+        attendance = Attendance.objects.get(pk=pk)
+        data = AttendanceSerializer(instance=attendance, data=request.data)
+    except Exception as e:
+        return Response(status=status.HTTP_404_NOT_FOUND)
 
     if data.is_valid():
         data.save()
-        return Response(data.data)
+        return Response(data.data,status=status.HTTP_200_OK)
     else:
         return Response(data.errors, status=status.HTTP_404_NOT_FOUND)
 
@@ -110,7 +116,7 @@ def delete_attendance(request, pk):
         return Response(status=status.HTTP_202_ACCEPTED)
     except Exception as e:
         response_html = f'Error: {str(e)}'
-        return Response(response_html)
+        return Response(response_html,status=status.HTTP_404_NOT_FOUND)
 
 @api_view(['GET'])
 def hello_message(request):
@@ -122,3 +128,6 @@ def hello_message(request):
     """
     content = {'message': 'Hello, World!'}
     return Response(content)
+
+def sfile_load(request):
+    return render(request,'basic.html')

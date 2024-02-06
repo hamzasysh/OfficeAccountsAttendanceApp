@@ -64,7 +64,7 @@ def view_users(request):
 
     if users:
         serializer = UserSerializer(users, many=True)
-        return Response(serializer.data)
+        return Response(serializer.data,status.HTTP_200_OK)
     else:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
@@ -80,12 +80,16 @@ def update_users(request, pk):
     Returns:
         Response: A response containing updated user data if successful, or error messages if validation fails.
     """
-    user = CustomUser.objects.get(pk=pk)
-    data = UserSerializer(instance=user, data=request.data)
+    try:
+        user = CustomUser.objects.get(pk=pk)
+        data = UserSerializer(instance=user, data=request.data)
+    except Exception as e:
+        response_html = f'Error: {str(e)}'
+        return Response(response_html, status=status.HTTP_404_NOT_FOUND)
 
     if data.is_valid():
         data.save()
-        return Response(data.data)
+        return Response(data.data,status.HTTP_200_OK)
     else:
         return Response(data.errors, status=status.HTTP_404_NOT_FOUND)
 
@@ -107,7 +111,7 @@ def delete_users(request, pk):
         return Response(status=status.HTTP_202_ACCEPTED)
     except Exception as e:
         response_html = f'Error: {str(e)}'
-        return Response(response_html)
+        return Response(response_html,status=status.HTTP_404_NOT_FOUND)
 
 @api_view(['GET'])
 def hello_message(request):

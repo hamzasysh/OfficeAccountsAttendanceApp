@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Readex Pro';
+    src: local('Readex Pro'),
+         url('../fonts/ReadexPro-VariableFont_HEXP,wght.ttf') format("truetype");
+  }
+
+body {
+      font-family: "Readex Pro" !important;
+  }

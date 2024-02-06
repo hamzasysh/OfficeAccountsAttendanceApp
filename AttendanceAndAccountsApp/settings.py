@@ -86,10 +86,10 @@ DATABASES = {
             'ENGINE': 'djongo',
             'ENFORCE_SCHEMA': False,
             'CLIENT': {
-                'host': 'mongodb_uri_atlas',
-                'username': 'mongodb_atlas_uname',
-                'password': 'mongodb_atlas_password',
-                'name': 'db_name',
+                'host': 'mongodb_uri',
+                'username': 'uname',
+                'password': 'password',
+                'name': 'dbname',
                 'authMechanism': 'SCRAM-SHA-1'
             }
     }
@@ -161,4 +161,12 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'static'
+#STATICFILES_DIRS = [BASE_DIR / 'static',]
 
+STORAGES = {
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    },
+}
